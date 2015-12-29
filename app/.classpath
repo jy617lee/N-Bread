@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="build/generated/source/buildConfig/androidTest/debug"/>
+	<classpathentry kind="src" path="build/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/generated/source/r/debug"/>
+	<classpathentry kind="src" path="src/androidTest/java"/>
+	<classpathentry kind="src" path="src/main/gen"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="lib" path="build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"/>
+	<classpathentry kind="lib" path="build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"/>
+	<classpathentry kind="lib" path="build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"/>
+	<classpathentry kind="lib" path="build/intermediates/pre-dexed/debug/classes-390d093862a4d899b1f4c379fdc3a98c594cd59e.jar"/>
+	<classpathentry kind="lib" path="build/intermediates/pre-dexed/debug/classes-be0b902fb24f2e73c0a00bbbd920c4ecfc3be464.jar"/>
+	<classpathentry kind="lib" path="build/intermediates/pre-dexed/debug/internal_impl-22.2.1-91c6a5a58f425d55435dca891374bc0e976fa310.jar"/>
+	<classpathentry kind="lib" path="build/intermediates/pre-dexed/debug/support-annotations-22.2.1-13d5a2d6148fae5576b1be484a6c2fa35287fd4d.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="src/main/bin/classes"/>
+</classpath>

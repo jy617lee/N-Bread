@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AccountManager</string>
+    <string name="main_backkey_msg">Press \'Back\' button again to exit</string>
 </resources>
