@@ -1,12 +1,13 @@
 package com.yunihuani.accountmanager.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.yunihuani.accountmanager.R;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
