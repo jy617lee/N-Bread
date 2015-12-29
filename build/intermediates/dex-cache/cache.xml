@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\workspace\androidStudio\AccountManager\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="E:\workspace\androidStudio\AccountManager\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-91c6a5a58f425d55435dca891374bc0e976fa310.jar" />
+    </item>
+    <item
+        jar="E:\workspace\androidStudio\AccountManager\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="E:\workspace\androidStudio\AccountManager\app\build\intermediates\pre-dexed\debug\classes-be0b902fb24f2e73c0a00bbbd920c4ecfc3be464.jar" />
+    </item>
+    <item
+        jar="E:\Works\android-sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="E:\workspace\androidStudio\AccountManager\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-13d5a2d6148fae5576b1be484a6c2fa35287fd4d.jar" />
+    </item>
+    <item
+        jar="E:\workspace\androidStudio\AccountManager\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="E:\workspace\androidStudio\AccountManager\app\build\intermediates\pre-dexed\debug\classes-390d093862a4d899b1f4c379fdc3a98c594cd59e.jar" />
+    </item>
+
+</items>
