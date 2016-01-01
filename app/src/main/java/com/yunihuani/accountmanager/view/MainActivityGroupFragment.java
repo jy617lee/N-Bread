@@ -1,6 +1,5 @@
 package com.yunihuani.accountmanager.view;
 
-import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yunihuani.accountmanager.R;
-import com.yunihuani.accountmanager.system.Account;
 import com.yunihuani.accountmanager.system.Group;
 
 import java.util.ArrayList;
@@ -37,7 +34,6 @@ public class MainActivityGroupFragment extends Fragment {
         groups = new ArrayList<Group>();
         mListAdapter = new GroupListAdapter(getActivity(), R.id.main_group_listview, groups);
         listview.setAdapter(mListAdapter);
-        getGroupData();
 
         ((Button) rootView.findViewById(R.id.main_group_btn_add)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +45,10 @@ public class MainActivityGroupFragment extends Fragment {
         return rootView;
     }
 
-    private void addDummyData() {
-        MainActivity.mDbManager.GroupTable.create(new Group(1, "Group1", new Account()));
-        MainActivity.mDbManager.GroupTable.create(new Group(2, "Group2", new Account()));
-        MainActivity.mDbManager.GroupTable.create(new Group(3, "Group3", new Account()));
+    @Override
+    public void onResume() {
+        super.onResume();
+        getGroupData();
     }
 
     private void getGroupData() {

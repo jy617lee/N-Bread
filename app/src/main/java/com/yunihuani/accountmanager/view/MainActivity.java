@@ -1,6 +1,7 @@
 package com.yunihuani.accountmanager.view;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
             transaction.commit();
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mDbManager != null) {
+            mDbManager.close();
+        }
+    }
     @Override
     public void onBackPressed() {
         backPressCloseHandler.onBackPressed();
@@ -50,8 +59,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.menu_add:
+                startActivity(new Intent(MainActivity.this, GroupDetailActivity.class));
                 return true;
             case R.id.menu_setting:
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -18,6 +18,8 @@ package com.yunihuani.accountmanager.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -44,22 +46,24 @@ public class SlidingTabsBasicFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        mViewPager.setAdapter(new SamplePagerAdapter());
+        mViewPager.setAdapter(new SamplePagerAdapter(getActivity().getSupportFragmentManager()));
 
         mSlidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setViewPager(mViewPager);
     }
 
-    class SamplePagerAdapter extends PagerAdapter {
+    class SamplePagerAdapter extends FragmentPagerAdapter {
+        public SamplePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+        Fragment[] fragments = {
+                new MainActivityGroupFragment(),
+                new MainActivityFriendFragment()
+        };
         @Override
         public int getCount() {
-            return 2;
+            return fragments.length;
         }
-        @Override
-        public boolean isViewFromObject(View view, Object o) {
-            return o == view;
-        }
-
         @Override
         public CharSequence getPageTitle(int position) {
             switch(position) {
@@ -71,21 +75,8 @@ public class SlidingTabsBasicFragment extends Fragment {
             return null;
         }
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            View view = getActivity().getLayoutInflater().inflate(R.layout.pager_item,
-                    container, false);
-
-            container.addView(view);
-
-            TextView title = (TextView) view.findViewById(R.id.item_title);
-            title.setText(String.valueOf(position + 1));
-
-            return view;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
+        public Fragment getItem(int position) {
+            return fragments[position];
         }
     }
 }
