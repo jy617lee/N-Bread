@@ -33,10 +33,10 @@ public class DbGroupTable<E> extends DbTable {
         public final String DATE = "'date'";
         public final String ACCOUNTID = "'account_id'";
 
-        public final String ACCOUNT_BANK = "account_bank";
-        public final String ACCOUNT_BANKKEY = "account_bankkey";
-        public final String ACCOUNT_ACCOUNT = "account_account";
-        public final String ACCOUNT_NAME = "account_name";
+        public final String ACCOUNT_BANK = "'account_bank'";
+        public final String ACCOUNT_BANKKEY = "'account_bankkey'";
+        public final String ACCOUNT_ACCOUNT = "'account_account'";
+        public final String ACCOUNT_NAME = "'account_name'";
 
 
         public final int KEY_IDX = 0;
@@ -52,8 +52,8 @@ public class DbGroupTable<E> extends DbTable {
         public final String[] joinList = {IDX, NAME, DATE, ACCOUNTID, ACCOUNT_BANK, ACCOUNT_BANKKEY, ACCOUNT_ACCOUNT, ACCOUNT_NAME};
     }
 
-    public String[] getList() { return KEY.list; }
-    public String[] getJoinList() { return KEY.joinList; }
+    public String[] getList() { return parseColumns(KEY.list); }
+    public String[] getJoinList() { return parseColumns(KEY.joinList); }
     @Override
     public long create(Object item) {
         Group group = (Group)item;

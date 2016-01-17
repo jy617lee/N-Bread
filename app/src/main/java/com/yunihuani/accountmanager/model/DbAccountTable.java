@@ -43,8 +43,8 @@ public class DbAccountTable<E> extends DbTable {
         public final String[] joinList = {IDX, BANK, ACCOUNT, NAME};
     }
 
-    public String[] getList() { return KEY.list; }
-    public String[] getJoinList() { return KEY.joinList; }
+    public String[] getList() { return parseColumns(KEY.list); }
+    public String[] getJoinList() { return parseColumns(KEY.joinList); }
     @Override
     public long create(Object item) {
         Account account = (Account)item;
