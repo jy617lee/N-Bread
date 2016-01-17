@@ -21,7 +21,7 @@ public class Event {
 				new Group(cursor.getInt(DbEventTable.KEY.KEY_GROUP_IDX),
 						cursor.getString(DbEventTable.KEY.KEY_GROUP_NAME),
 						new Account(cursor.getInt(DbEventTable.KEY.KEY_GROUP_ACCOUNT_IDX),
-								cursor.getInt(DbEventTable.KEY.KEY_GROUP_ACCOUNT_BANKKEY),
+								cursor.getString(DbEventTable.KEY.KEY_GROUP_ACCOUNT_BANK),
 								cursor.getString(DbEventTable.KEY.KEY_GROUP_ACCOUNT_ACCOUNT),
 								cursor.getString(DbEventTable.KEY.KEY_GROUP_ACCOUNT_NAME)
 						)

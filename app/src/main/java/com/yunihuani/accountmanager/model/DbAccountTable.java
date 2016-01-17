@@ -48,13 +48,14 @@ public class DbAccountTable<E> extends DbTable {
     @Override
     public long create(Object item) {
         Account account = (Account)item;
-        return create(account.getBank(), account.getAccount(), account.getName());
+        return create(account.getId(),account.getBank(), account.getAccount(), account.getName());
     }
-    public long create(String bank, String account, String name) {
+    public long create(int id, String bank, String account, String name) {
         ContentValues v = new ContentValues();
         v.put(KEY.BANK, bank);
         v.put(KEY.ACCOUNT, account);
         v.put(KEY.NAME, name);
+        v.put(KEY.IDX, id);
         return mDb.insert(TABLE_NAME, null, v);
     }
     public boolean update(long idx, Account item) {
@@ -63,6 +64,6 @@ public class DbAccountTable<E> extends DbTable {
         v.put(KEY.ACCOUNT, item.getAccount());
         v.put(KEY.NAME, item.getName());
         v.put("'idx'", idx);
-        return mDb.update(TABLE_NAME, v, "'idx'" +"="+ idx, null) > 0;
+        return mDb.update(TABLE_NAME, v, "idx ="+ idx, null) > 0;
     }
 }
