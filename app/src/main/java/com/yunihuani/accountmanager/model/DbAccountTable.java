@@ -32,10 +32,10 @@ public class DbAccountTable<E> extends DbTable {
     }
 
     public static interface KEY {
-        public final String IDX = "idx";
-        public final String BANKKEY = "bankkey";
-        public final String ACCOUNT = "account";
-        public final String NAME = "name";
+        public final String IDX = "'idx'";
+        public final String BANKKEY = "'bankkey'";
+        public final String ACCOUNT = "'account'";
+        public final String NAME = "'name'";
 
         public final int KEY_IDX = 0;
         public final int KEY_BANKKEY = 1;
@@ -46,8 +46,8 @@ public class DbAccountTable<E> extends DbTable {
         public final String[] joinList = {IDX, BANKKEY, ACCOUNT, NAME};
     }
 
-    public String[] getList() { return KEY.list; }
-    public String[] getJoinList() { return KEY.joinList; }
+    public String[] getList() { return parseColumns(KEY.list); }
+    public String[] getJoinList() { return parseColumns(KEY.joinList); }
     @Override
     public long create(Object item) {
         Account account = (Account)item;

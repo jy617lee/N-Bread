@@ -51,6 +51,13 @@ public abstract class DbTable<E> {
         }
     }
 
+    public String[] parseColumns(String[] _list) {
+        String[] list = _list.clone();
+        for(int i = 0; i < list.length; i++) {
+            list[i] = list[i].substring(1, list[i].length()-1);
+        }
+        return list;
+    }
     public abstract String[] getList();
     public abstract String[] getJoinList();
 
@@ -63,7 +70,7 @@ public abstract class DbTable<E> {
     }
     public final Cursor fetch(boolean joined) {
         String cols[] = (joined) ? getJoinList() : getList();
-        Cursor mCursor = mDb.query(TABLE_NAME, cols, null, null, null, null, "'idx'");
+        Cursor mCursor = mDb.query(TABLE_NAME, cols, null, null, null, null, "idx");
         if(mCursor != null)
             mCursor.moveToFirst();
         return mCursor;
@@ -89,7 +96,7 @@ public abstract class DbTable<E> {
     public E fetchByIndex(int idx, boolean joined) {
         E item = null;
         String cols[] = (joined) ? getJoinList() : getList();
-        Cursor mCursor = mDb.query(TABLE_NAME, cols, "'idx'" + "=" + idx, null, null, null, "'idx'");
+        Cursor mCursor = mDb.query(TABLE_NAME, cols, "idx" + "=" + idx, null, null, null, "idx");
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
                 mCursor.moveToFirst();
@@ -103,23 +110,16 @@ public abstract class DbTable<E> {
     public final boolean update(long idx, String key, String value) {
         ContentValues v = new ContentValues();
         v.put(key, value);
-        return mDb.update(TABLE_NAME, v, "'idx'" +"="+ idx, null) > 0;
+        return mDb.update(TABLE_NAME, v, "idx" +"="+ idx, null) > 0;
     }
     public boolean update(long idx, E item) {
         ContentValues v = new ContentValues();
-//        v.put(KEY.NAME, item.getName());
-//        v.put(KEY.NUMBER, item.getNum());
-//        v.put(KEY.STARTTIME, item.getStartTime());
-//        v.put(KEY.ENDTIME, item.getEndTime());
-//        v.put(KEY.TYPE, item.getType());
-//        v.put(KEY.ISON, item.isOn());
         v.put("'idx'", idx);
-        return mDb.update(TABLE_NAME, v, "'idx'" +"="+ idx, null) > 0;
+        return mDb.update(TABLE_NAME, v, "idx" +"="+ idx, null) > 0;
     }
 
     // Delete Item
     public final boolean delete(long idx) {
-        return mDb.delete(TABLE_NAME, "'idx'" +"="+ idx, null) > 0;
+        return mDb.delete(TABLE_NAME, "idx" +"="+ idx, null) > 0;
     }
-
 }
