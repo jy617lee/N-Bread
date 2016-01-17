@@ -75,7 +75,7 @@ public abstract class DbTable<E> {
     public final List<E> fetchList(boolean joined) {
         ArrayList<E> list = new ArrayList<E>();
         Cursor cursor = fetch(joined);
-        if(cursor.isAfterLast())
+            if(cursor.isAfterLast())
             return list;
         do {
             list.add(constructor(cursor));
@@ -105,17 +105,17 @@ public abstract class DbTable<E> {
         v.put(key, value);
         return mDb.update(TABLE_NAME, v, "'idx'" +"="+ idx, null) > 0;
     }
-    public boolean update(long idx, E item) {
-        ContentValues v = new ContentValues();
-//        v.put(KEY.NAME, item.getName());
-//        v.put(KEY.NUMBER, item.getNum());
-//        v.put(KEY.STARTTIME, item.getStartTime());
-//        v.put(KEY.ENDTIME, item.getEndTime());
-//        v.put(KEY.TYPE, item.getType());
-//        v.put(KEY.ISON, item.isOn());
-        v.put("'idx'", idx);
-        return mDb.update(TABLE_NAME, v, "'idx'" +"="+ idx, null) > 0;
-    }
+//    public boolean update(long idx, E item) {
+//        ContentValues v = new ContentValues();
+////        v.put(KEY.NAME, item.getName());
+////        v.put(KEY.NUMBER, item.getNum());
+////        v.put(KEY.STARTTIME, item.getStartTime());
+////        v.put(KEY.ENDTIME, item.getEndTime());
+////        v.put(KEY.TYPE, item.getType());
+////        v.put(KEY.ISON, item.isOn());
+//        v.put("'idx'", idx);
+//        return mDb.update(TABLE_NAME, v, "'idx'" +"="+ idx, null) > 0;
+//    }
 
     // Delete Item
     public final boolean delete(long idx) {

@@ -5,9 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.yunihuani.accountmanager.system.Account;
-import com.yunihuani.accountmanager.system.Event;
-
-import java.util.HashMap;
 
 /**
  * Created by Seunghwan on 2015-12-26.
@@ -17,13 +14,13 @@ public class DbAccountTable<E> extends DbTable {
     public DbAccountTable(SQLiteDatabase db) {
         super(db);
 
-        TABLE_NAME = "account";
+        TABLE_NAME = "'account'";
         CREATE_TABLE = "create table " + TABLE_NAME +
-                "(" + KEY.IDX + " integer primary key autoincrement, " +
+                "(" + KEY.IDX + " integer primary key default 0, " +
 //                KEY.BANK + " text not null, " +
-                KEY.BANKKEY + " integer not null, " +
+                KEY.BANK + " text not null, " +
                 KEY.ACCOUNT + " text not null, " +
-                KEY.NAME + " text not null);";
+                KEY.NAME + " text not null)";
     }
 
     @Override
@@ -32,18 +29,18 @@ public class DbAccountTable<E> extends DbTable {
     }
 
     public static interface KEY {
-        public final String IDX = "idx";
-        public final String BANKKEY = "bankkey";
-        public final String ACCOUNT = "account";
-        public final String NAME = "name";
+        public final String IDX = "'idx'";
+        public final String BANK = "'bank'";
+        public final String ACCOUNT = "'account'";
+        public final String NAME = "'name'";
 
         public final int KEY_IDX = 0;
-        public final int KEY_BANKKEY = 1;
+        public final int KEY_BANK = 1;
         public final int KEY_ACCOUNT = 2;
         public final int KEY_NAME = 3;
 
-        public final String[] list = {IDX, BANKKEY, ACCOUNT, NAME};
-        public final String[] joinList = {IDX, BANKKEY, ACCOUNT, NAME};
+        public final String[] list = {IDX, BANK, ACCOUNT, NAME};
+        public final String[] joinList = {IDX, BANK, ACCOUNT, NAME};
     }
 
     public String[] getList() { return KEY.list; }
@@ -51,13 +48,21 @@ public class DbAccountTable<E> extends DbTable {
     @Override
     public long create(Object item) {
         Account account = (Account)item;
-        return create(account.getBankKey(), account.getAccount(), account.getName());
+        return create(account.getBank(), account.getAccount(), account.getName());
     }
-    public long create(int bankkey, String account, String name) {
+    public long create(String bank, String account, String name) {
         ContentValues v = new ContentValues();
-        v.put(KEY.BANKKEY, bankkey);
+        v.put(KEY.BANK, bank);
         v.put(KEY.ACCOUNT, account);
         v.put(KEY.NAME, name);
         return mDb.insert(TABLE_NAME, null, v);
+    }
+    public boolean update(long idx, Account item) {
+        ContentValues v = new ContentValues();
+        v.put(KEY.BANK, item.getBank());
+        v.put(KEY.ACCOUNT, item.getAccount());
+        v.put(KEY.NAME, item.getName());
+        v.put("'idx'", idx);
+        return mDb.update(TABLE_NAME, v, "'idx'" +"="+ idx, null) > 0;
     }
 }

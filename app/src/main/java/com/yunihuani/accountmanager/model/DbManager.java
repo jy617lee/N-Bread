@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.yunihuani.accountmanager.system.Account;
 import com.yunihuani.accountmanager.system.Group;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class DbManager {
 	private final static String TAG = "DbManager";
 
 	public DbGroupTable GroupTable;
+	public DbAccountTable AccountTable;
 	public ArrayList<DbTable> DbTables = new ArrayList<DbTable>();
 
 	private Context mContext;
@@ -61,7 +63,9 @@ public class DbManager {
 		@Override
 		public void onConfigure(SQLiteDatabase db) {
 			GroupTable = new DbGroupTable(db);
+			AccountTable = new DbAccountTable(db);
 			DbTables.add(GroupTable);
+			DbTables.add(AccountTable);
 		}
 		@Override
 		public void onCreate(SQLiteDatabase db) {

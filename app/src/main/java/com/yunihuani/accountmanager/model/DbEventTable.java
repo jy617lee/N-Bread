@@ -39,7 +39,7 @@ public class DbEventTable<E> extends DbTable {
         public final String GROUP_ACCOUNT_BANK = "group_account_bank";
         public final String GROUP_ACCOUNT_ACCOUNT = "group_account_account";
         public final String GROUP_ACCOUNT_NAME = "group_account_name";
-        public final String GROUP_ACCOUNT_BANKKEY = "group_account_bankkey";
+
 
         public final int KEY_IDX = 0;
         public final int KEY_GROUP_IDX = 1;
@@ -51,12 +51,12 @@ public class DbEventTable<E> extends DbTable {
         public final int KEY_GROUP_ACCOUNT_BANK = 6;
         public final int KEY_GROUP_ACCOUNT_ACCOUNT = 7;
         public final int KEY_GROUP_ACCOUNT_NAME = 8;
-        public final int KEY_GROUP_ACCOUNT_BANKKEY = 9;
+
 
         public final String[] list = {IDX, GROUP_IDX, NAME, AMOUNT};
         public final String[] joinList = {IDX, GROUP_IDX, NAME, AMOUNT, GROUP_NAME,
                                         GROUP_ACCOUNT_IDX, GROUP_ACCOUNT_BANK, GROUP_ACCOUNT_BANK, GROUP_ACCOUNT_ACCOUNT,
-                                        GROUP_ACCOUNT_NAME, GROUP_ACCOUNT_BANKKEY};
+                                        GROUP_ACCOUNT_NAME};
     }
 
     public String[] getList() { return KEY.list; }
